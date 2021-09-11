@@ -1,6 +1,6 @@
-#' Writes a dataframe to the database 
+#' Writes a dataframe to the database
 #'
-#' This function allows you to write the data of dataframe to the database. 
+#' This function allows you to write the data of dataframe to the database.
 #' @param df_raw A dataframe or a matrix
 #' @param tablename A string which contains the name of table in the database
 #' @export
@@ -15,7 +15,8 @@ row_sql_function <- function(df_raw,tablename){
     for (i in 1:nrow(df)){
       sqlstring <- paste0("INSERT IGNORE INTO ",tablename ," VALUES('",paste0(as.character(df[i,]) ,collapse = "', '"), "')")
       insert_function(sqlstring)
-      lapply(dbListConnections(RMySQL::MySQL()), dbDisconnect)
+      lapply(DBI::dbListConnections(RMySQL::MySQL()), DBI::dbDisconnect)
     }
   }
 }
+
