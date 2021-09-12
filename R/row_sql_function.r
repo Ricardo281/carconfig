@@ -20,3 +20,5 @@ row_sql_function <- function(df_raw,tablename){
   }
 }
 
+
+
