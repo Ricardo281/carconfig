@@ -10,7 +10,7 @@
 
 seperate_price_from_string <- function(string_vector, price=TRUE){
   if (price == TRUE){
-    extracted_string <-trimws(gsub("CHF","",stringr::str_extract(string_vector,"(CHF|[^0-9])[[:space:]]([0-9]{0,1}'?[0-9]+\\.?[0-9]+|[0-9])( CHF|$)")))
+    extracted_string <-trimws(stringr::str_extract(string_vector,"(CHF|[^0-9])[[:space:]]([0-9]{0,1}'?[0-9]+\\.?[0-9]+|[0-9])( CHF|$)"))
   } else {
     extracted_string <- gsub("(CHF|[^0-9])[[:space:]]([0-9]{0,1}'?[0-9]+\\.?[0-9]+|[0-9])( CHF|$)","",string_vector)
 
