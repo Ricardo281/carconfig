@@ -14,10 +14,19 @@ row_sql_function <- function(df_raw,tablename){
     df <- data.frame(lapply(df, gsub, pattern = "'",replacement= ""))
     for (i in 1:nrow(df)){
       sqlstring <- paste0("INSERT IGNORE INTO ",tablename ," VALUES('",paste0(as.character(df[i,]) ,collapse = "', '"), "')")
-      insert_function(sqlstring)
-      lapply(DBI::dbListConnections(RMySQL::MySQL()), DBI::dbDisconnect)
+      con <- tryCatch({
+        DBI::dbSendQuery(con,sqlstring)
+        return(con)},
+        error = function(cond){
+          lapply(DBI::dbListConnections(RMySQL::MySQL()), DBI::dbDisconnect)
+          con <- connectToDb_func()
+          DBI::dbSendQuery(con,sqlstring)
+          return(con)
+        }
+      )
     }
   }
+  return(con)
 }
 
 
