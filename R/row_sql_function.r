@@ -18,7 +18,6 @@ row_sql_function <- function(df_raw,tablename){
         DBI::dbSendQuery(con,sqlstring)
         return(con)},
         error = function(cond){
-          lapply(DBI::dbListConnections(RMySQL::MySQL()), DBI::dbDisconnect)
           con <- connectToDb_func()
           DBI::dbSendQuery(con,sqlstring)
           return(con)
