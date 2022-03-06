@@ -12,12 +12,5 @@ scroll_into_view(rD, webel)
 \item{webel}{A Selenium Webelement}
 }
 \description{
-This function allows you open the browser with a specific url and sets the
-Pageload/Implicit timeout. There is a option that cookie will be clicked.
-}
-\examples{
-url <- "https://www.hyundai.ch/"
-remDr <-  prepare_browser_function(url,"id","onetrust-reject-all-handler", containerport = 4445L)
-webelement <- remDr$findElement(using = "class", "menu")
-scroll_into_view(remDr, webelement)
+This function allows you to scroll webelements into the view
 }
