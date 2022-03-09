@@ -4,12 +4,14 @@
 \alias{scroll_into_view}
 \title{Scroll a webelemt into the view}
 \usage{
-scroll_into_view(rd, webel)
+scroll_into_view(rd, webel, simple = TRUE)
 }
 \arguments{
 \item{rd}{A Remote Driver Connection to the browser in docker container}
 
 \item{webel}{A Selenium Webelement}
+
+\item{simple}{boolean for simpler javascript scroll function. Defaults to TRUE.}
 }
 \description{
 This function allows you to scroll webelements into the view
