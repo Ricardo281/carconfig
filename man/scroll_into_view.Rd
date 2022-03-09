@@ -4,10 +4,10 @@
 \alias{scroll_into_view}
 \title{Scroll a webelemt into the view}
 \usage{
-scroll_into_view(rD, webel)
+scroll_into_view(rd, webel)
 }
 \arguments{
-\item{rD}{A Remote Driver Connection to the browser in docker container}
+\item{rd}{A Remote Driver Connection to the browser in docker container}
 
 \item{webel}{A Selenium Webelement}
 }
