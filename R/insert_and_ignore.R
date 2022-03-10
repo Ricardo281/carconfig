@@ -15,7 +15,7 @@ insert_and_ignore <- function(con, tablename,primarykeycols,df) {
   rs <- DBI::dbAppendTable(con, glue::glue("{tablename}_stage"), df)
   # # flip the stage over into final
   rs <- DBI::dbSendQuery(con,glue::glue("insert into {tablename} select * from {tablename}_stage ON CONFLICT ({pk}) DO NOTHING;",
-                                        pk = glue_collapse(primarykeycols,",")))
+                                        pk = glue::glue_collapse(primarykeycols,",")))
   DBI::dbClearResult(rs)
 }
 
